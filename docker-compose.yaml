@@ -81,6 +81,8 @@ x-airflow-common:
     - ${AIRFLOW_PROJ_DIR:-.}/logs:/opt/airflow/logs
     - ${AIRFLOW_PROJ_DIR:-.}/config:/opt/airflow/config
     - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
+    # Q9: AWS 자격증명은 파일을 복사하지 않고 호스트 ~/.aws 를 읽기 전용으로 연결 (프로필 이름만 .env 에서 지정)
+    - ${HOME}/.aws:/home/airflow/.aws:ro
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
