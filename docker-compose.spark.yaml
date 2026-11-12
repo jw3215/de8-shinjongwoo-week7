@@ -1,0 +1,33 @@
+# Q4 — Spark Standalone 클러스터 (master 1 + worker 2)
+# Airflow compose 와 같은 폴더에 있으므로 프로젝트 이름을 분리해 서로의 컨테이너를 건드리지 않게 합니다.
+name: spark-week7
+
+x-spark-common: &spark-common
+  image: apache/spark:4.3.0-python3
+  networks: [spark-net]
+  volumes:
+    - ./jobs:/opt/spark-apps/jobs:ro    # 잡 스크립트
+    - ./data:/opt/spark-data:ro         # 입력 파일(wordcount.txt) — executor 도 읽어야 하므로 worker 에도 마운트
+
+services:
+  spark-master:
+    <<: *spark-common
+    container_name: spark-master
+    hostname: spark-master
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.master.Master --host spark-master --port 7077 --webui-port 8080
+    ports:
+      - "9090:8080"   # Master Web UI (8080 은 Airflow 가 사용)
+      - "7077:7077"
+
+  spark-worker-1: &spark-worker
+    <<: *spark-common
+    hostname: spark-worker-1
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker --cores 1 --memory 1g spark://spark-master:7077
+    depends_on: [spark-master]
+
+  spark-worker-2:
+    <<: *spark-worker
+    hostname: spark-worker-2
+
+networks:
+  spark-net:
