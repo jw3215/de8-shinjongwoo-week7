@@ -24,6 +24,8 @@ docker compose up -d
 
 ## 실습 환경
 로컬 Mac 한 대에서 Docker Compose 만으로 Airflow · Spark · PostgreSQL 실습 환경을 구성했다.
+macOS(Apple Silicon) · Docker Desktop(메모리 8GB) 위에서 Airflow 3.4.0(CeleryExecutor) 과 Spark 4.3.0 Standalone 을 compose 로 구성했다.
 
 ## 회고
 자격증명을 코드에 남기지 않고 ~/.aws 를 읽기 전용으로 마운트하는 방식을 익혔다.
+catchup 하나로 실행 개수가 1개와 8개로 갈리는 것을 직접 확인한 것이 가장 인상 깊었다.
