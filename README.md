@@ -23,7 +23,7 @@ docker compose up -d
 ```
 
 ## 실습 환경
-macOS(Apple Silicon) · Docker Desktop 에서 Airflow 3.4.0 과 Spark 4.3.0 을 compose 로 띄워 진행했다.
+macOS(Apple Silicon) · Docker Desktop(메모리 8GB) 위에서 Airflow 3.4.0(CeleryExecutor) 과 Spark 4.3.0 Standalone 을 compose 로 구성했다.
 
 ## 회고
-Airflow 의 XCom·재시도·백필을 익히고, S3 와 Spark 를 DAG 하나로 묶어 봤다.
+catchup 하나로 실행 개수가 1개와 8개로 갈리는 것을 직접 확인한 것이 가장 인상 깊었다.
