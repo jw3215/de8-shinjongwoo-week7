@@ -21,3 +21,9 @@ docker compose up airflow-init
 docker compose up -d
 # UI: http://localhost:8080  (airflow / airflow)
 ```
+
+## 실습 환경
+macOS(Apple Silicon) · Docker Desktop 에서 Airflow 3.4.0 과 Spark 4.3.0 을 compose 로 띄워 진행했다.
+
+## 회고
+Airflow 의 XCom·재시도·백필을 익히고, S3 와 Spark 를 DAG 하나로 묶어 봤다.
