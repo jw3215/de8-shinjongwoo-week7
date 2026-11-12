@@ -23,7 +23,7 @@ docker compose up -d
 ```
 
 ## 실습 환경
-macOS(Apple Silicon) · Docker Desktop 에서 Airflow 3.4.0 과 Spark 4.3.0 을 compose 로 띄워 진행했다.
+로컬 Mac 한 대에서 Docker Compose 만으로 Airflow · Spark · PostgreSQL 실습 환경을 구성했다.
 
 ## 회고
-Airflow 의 XCom·재시도·백필을 익히고, S3 와 Spark 를 DAG 하나로 묶어 봤다.
+자격증명을 코드에 남기지 않고 ~/.aws 를 읽기 전용으로 마운트하는 방식을 익혔다.
